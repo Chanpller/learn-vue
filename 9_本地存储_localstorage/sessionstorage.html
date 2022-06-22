@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>sessionStorage</title>
+</head>
+<body>
+<h2>sessionStorage</h2>
+<button onclick="saveData()">保存数据到本地浏览器</button>
+<button onclick="getData()">读取一条本地浏览器</button>
+<button onclick="deleteData()">删除一条本地浏览器</button>
+<button onclick="clearData()">清空所有本地浏览器</button>
+</body>
+<script>
+    function  saveData(){
+        let person = {name:'张三',age:18};
+        //存储都是string字符串，如果是对象，会调用toString方法
+        sessionStorage.setItem("保存数据到本地浏览器","value值");
+        sessionStorage.setItem("数据2","值2");
+        sessionStorage.setItem("person",JSON.stringify(person));
+    }
+    function  getData(){
+
+        let value = sessionStorage.getItem("保存数据到本地浏览器");
+        alert(value);
+        let person1 = sessionStorage.getItem("person1");
+        alert("获取的数据为空："+person1);
+        alert("json转空："+JSON.parse(person1));
+        let person = sessionStorage.getItem("person");
+        alert("person："+JSON.parse(person));
+    }
+    function  deleteData(){
+        sessionStorage.removeItem("保存数据到本地浏览器");
+    }
+    function  clearData(){
+        sessionStorage.clear();
+    }
+</script>
+</html>
